@@ -1,20 +1,19 @@
-
-
+import { Route, Routes, useParams } from "react-router";
+import Navbar from "./components/Navbar";
+import Home from "./pages/Home";
+import PostDetails from "./pages/PostDetails";
 
 function App() {
+  const { id } = useParams();
   return (
     <>
-    
-<button className="btn btn-neutral">Neutral</button>
-<button className="btn btn-primary">Primary</button>
-<button className="btn btn-secondary">Secondary</button>
-<button className="btn btn-accent">Accent</button>
-<button className="btn btn-info">Info</button>
-<button className="btn btn-success">Success</button>
-<button className="btn btn-warning">Warning</button>
-<button className="btn btn-error">Error</button>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path={`/posts/:id`} element={<PostDetails />} />
+      </Routes>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
