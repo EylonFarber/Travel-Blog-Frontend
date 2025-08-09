@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router";
 
-export default function Postcard({ author, title, content, cover, date, id }) {
+export default function PostCard({ author, title, content, cover, date, id }) {
   return (
     <Link to={`/posts/${id}`}>
       <div className="card bg-base-100 image-full w-96 shadow-sm">

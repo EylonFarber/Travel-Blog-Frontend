@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Postcard from "../components/Postcard";
-//  This page will use axios to get all posts from your backend and display them using your PostCard component.
+import PostCard from "../components/PostCard";
 
 export default function Home() {
 
@@ -18,7 +17,7 @@ export default function Home() {
   return (
     <div>
       {allPosts.map((post) => (
-        <Postcard
+        <PostCard
           id={post.id}
           key={post.id}
           author={post.author}

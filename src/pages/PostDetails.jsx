@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router";
+import { Link, useNavigate, useParams } from "react-router";
 import axios from "axios";
 import Button from "../components/Button";
 
-export default function PostDetails({ author, title, content, cover, date }) {
+export default function PostDetails() {
   const [post, setPost] = useState({});
   const { id } = useParams();
   const navigate = useNavigate();
@@ -39,7 +39,10 @@ export default function PostDetails({ author, title, content, cover, date }) {
         <div>
           <h1 className="text-5xl font-bold">{post.title}</h1>
           <p className="py-6">{post.content}</p>
+          <Link to={`/update/${id}`}
+          >
           <Button btnText="Edit" clickHandler={updateHandler} color={"info"} />
+          </Link>
           <Button
             btnText="Delete Post"
             clickHandler={() =>
