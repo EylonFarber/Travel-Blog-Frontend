@@ -1,20 +1,17 @@
 import React from 'react'
+import { Link } from 'react-router'
+import { useAppContext } from '../context/AppContext'
 
 export default function Navbar() {
+  const {homePage, createPost} = useAppContext()
+
   return (
 <div className="navbar bg-base-100 shadow-sm">
-  <div className="flex-none">
-    <button className="btn btn-square btn-ghost">
-        <details className="dropdown">
-  <summary className="btn m-1">
-     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block h-5 w-5 stroke-current"> <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path> </svg>
-</summary>
-  <ul className="menu dropdown-content bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
-    <li><a>Link to home</a></li>
-    <li><a>Link to create post</a></li>
-  </ul>
-</details>
-    </button>
+  <div className="flex gap-6">
+
+    {!homePage && <Link to={'/'}> <button>home</button></Link>}
+   {!createPost && <Link to ={'/newpost'}><button>new post</button></Link>
+}
   </div>
   <div className="flex-1">
     <a className="btn btn-ghost text-xl">Travel Blog</a>

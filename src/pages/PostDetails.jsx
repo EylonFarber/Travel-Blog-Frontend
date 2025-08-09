@@ -2,11 +2,16 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router";
 import axios from "axios";
 import Button from "../components/Button";
+import { useAppContext } from "../context/AppContext";
 
 export default function PostDetails() {
   const [post, setPost] = useState({});
   const { id } = useParams();
   const navigate = useNavigate();
+  const { setHomePage, setCreatePost } = useAppContext();
+
+  setHomePage(false);
+  setCreatePost(false);
 
   useEffect(() => {
     axios
@@ -23,9 +28,9 @@ export default function PostDetails() {
   function deleteHandler() {
     axios
       .delete(`http://localhost:3000/posts/${id}`)
-      .then((res) => console.log(res.data))
+      .then((res) => (res))
       .catch((error) => console.log(error));
-      navigate("/");
+    navigate("/");
   }
 
   return (
@@ -39,9 +44,12 @@ export default function PostDetails() {
         <div>
           <h1 className="text-5xl font-bold">{post.title}</h1>
           <p className="py-6">{post.content}</p>
-          <Link to={`/update/${id}`}
-          >
-          <Button btnText="Edit" clickHandler={updateHandler} color={"info"} />
+          <Link to={`/update/${id}`}>
+            <Button
+              btnText="Edit"
+              clickHandler={updateHandler}
+              color={"info"}
+            />
           </Link>
           <Button
             btnText="Delete Post"

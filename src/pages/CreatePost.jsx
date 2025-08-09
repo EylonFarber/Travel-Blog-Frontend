@@ -3,8 +3,13 @@ import PostInput from "../components/postInput";
 import InputHeader from "../components/InputHeader";
 import axios from "axios";
 import ActionModal from "../components/ActionModal";
+import { useAppContext } from '../context/AppContext'
 
 export default function CreatePost() {
+      const {setHomePage, setCreatePost} = useAppContext()
+   setHomePage(false)
+   setCreatePost(true)
+
   function submitHandler(event) {
     event.preventDefault();
 
@@ -20,7 +25,7 @@ export default function CreatePost() {
         content: conetntInput,
         cover: coverInput,
       })
-      .then((res) => console.log(res.data))
+      .then((res) => (res))
       .catch((error) => console.log(error));
 
     document.getElementById("my_modal_1").showModal();
