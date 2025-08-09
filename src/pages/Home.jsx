@@ -4,7 +4,9 @@ import Postcard from "../components/Postcard";
 //  This page will use axios to get all posts from your backend and display them using your PostCard component.
 
 export default function Home() {
+
   const [allPosts, setAllPosts] = useState([]);
+  
   useEffect(() => {
     axios
       .get(`http://localhost:3000/posts`)
