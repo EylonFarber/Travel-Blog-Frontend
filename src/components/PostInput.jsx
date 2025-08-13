@@ -3,20 +3,21 @@ import Button from "./Button";
 
 export default function PostInput({ titleInput, conetntInput, authorInput, coverInput, submitHandler }) {
   return (
-    <form className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4" onSubmit={submitHandler}>
-        <label className="label">Title</label>
-        <input type="text" name="titleInput" className="input" placeholder={titleInput} />
+    <form className="fieldset w-screen p-4 flex flex-col items-center" onSubmit={submitHandler}>
+        <label className="label md:text-xl">Title</label>
+        <input type="text" name="titleInput" className="input w-[80%]" placeholder={titleInput} />
 
-        <label className="label">Content</label>
-        <input type="text" name="conetntInput" className="input" placeholder={conetntInput} />
+        <label className="label md:text-xl">Content</label>
+        <input type="text" name="conetntInput" className="input w-[80%]" placeholder={conetntInput} />
 
-        <label className="label">Author</label>
-        <input type="text" name="authorInput" className="input" placeholder={authorInput} />
+        <label className="label md:text-xl">Author</label>
+        <input type="text" name="authorInput" className="input w-[80%]" placeholder={authorInput} />
 
-        <label className="label">Cover</label>
-        <input type="text" name="coverInput" className="input" placeholder={coverInput} />
-
-        <Button btnText='Post' color='info' type='submit'/>
+        <label className="label md:text-xl">Cover</label>
+        <input type="text" name="coverInput" className="input w-[80%]" placeholder={coverInput} />
+<div className="mt-4">
+        <Button btnText='Publish' color='info' type='submit'/>
+</div>
     </form>
   );
 }

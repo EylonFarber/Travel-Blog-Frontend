@@ -57,7 +57,7 @@ export default function UpdatePost() {
     document.getElementById("my_modal_1").showModal();
   }
   return (
-    <div>
+    <div className="flex-col items-center">
       <InputHeader formTitle={"Update Post"} />
       <PostInput
         submitHandler={submitHandler}

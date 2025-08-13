@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react'
 
-export default function InputHeader({ formTitle }) {
+export default function Hero() {
   return (
     <div
-      className="hero h-46 md:h-96"
+      className="hero h-96 max-lg:hidden"
       style={{
         backgroundImage:
           "url(https://img.daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.webp)",
@@ -12,9 +12,8 @@ export default function InputHeader({ formTitle }) {
       <div className="hero-overlay"></div>
       <div className="hero-content text-neutral-content text-center">
         <div className="max-w-md">
-          <h1 className="mb-5 text-5xl font-bold">{formTitle}</h1>
+          <h1 className="mb-5 text-5xl font-bold">Travel Blog</h1>
         </div>
       </div>
-    </div>
-  );
+    </div>  )
 }

@@ -34,16 +34,16 @@ export default function PostDetails() {
   }
 
   return (
-    <div className="hero bg-base-200 min-h-screen">
-      <div className="hero-content flex-col lg:flex-row-reverse">
+    <div className="hero">
+      <div className="flex-col items-center w-full lg:flex lg:flex-row justify-center lg:pt-12">
         <img
           src={post.cover}
           alt={post.title}
-          className="max-w-sm rounded-lg shadow-2xl"
+          className="w-full px-6 rounded-lg shadow-2xl lg:w-[30%]"
         />
-        <div>
-          <h1 className="text-5xl font-bold">{post.title}</h1>
-          <p className="py-6">{post.content}</p>
+        <div className="md:px-12 pt-6 lg:w-[50%]">
+          <h1 className="text-2xl md:text-5xl font-bold">{post.title}</h1>
+          <p className="py-6 md:text-2xl">{post.content}</p>
           <Link to={`/update/${id}`}>
             <Button
               btnText="Edit"

@@ -3,12 +3,14 @@ import PostInput from "../components/postInput";
 import InputHeader from "../components/InputHeader";
 import axios from "axios";
 import ActionModal from "../components/ActionModal";
-import { useAppContext } from '../context/AppContext'
+import FailureModal from "../components/failureModal";
+import { useAppContext } from "../context/AppContext";
 
 export default function CreatePost() {
-      const {setHomePage, setCreatePost} = useAppContext()
-   setHomePage(false)
-   setCreatePost(true)
+
+  const { setHomePage, setCreatePost } = useAppContext();
+  setHomePage(false);
+  setCreatePost(true);
 
   function submitHandler(event) {
     event.preventDefault();
@@ -18,24 +20,32 @@ export default function CreatePost() {
     const authorInput = event.target.authorInput.value;
     const coverInput = event.target.coverInput.value;
 
-    axios
-      .post(`http://localhost:3000/posts`, {
-        author: authorInput,
-        title: titleInput,
-        content: conetntInput,
-        cover: coverInput,
-      })
-      .then((res) => (res))
-      .catch((error) => console.log(error));
+    if (
+      titleInput == "" || conetntInput == "" ||authorInput == "" ||coverInput == ""
+    ) {    document.getElementById("failureModal").showModal();
 
-    document.getElementById("my_modal_1").showModal();
+    } else {
+      axios
+        .post(`http://localhost:3000/posts`, {
+          author: authorInput,
+          title: titleInput,
+          content: conetntInput,
+          cover: coverInput,
+        })
+        .then((res) => res)
+        .catch((error) => console.log(error));
+
+      document.getElementById("my_modal_1").showModal();
+    }
+
   }
 
   return (
-    <div>
+    <div className="flex flex-col items-center">
       <InputHeader formTitle={"New Post"} />
       <PostInput submitHandler={submitHandler} />
       <ActionModal modalText={"Your trip is posted!"} />
-    </div>
+      <FailureModal modalText={"please fill al fields"}/>
+          </div>
   );
 }
